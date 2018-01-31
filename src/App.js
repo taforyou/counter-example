@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      value : 99
+    }
+  }
+
+  handleIncrement() {
+    let _temp = this.state.value
+    //_temp++
+    _temp = _temp + 1;
+    this.setState({value : _temp })
+  }
+
+  handleDecrement() {
+    let _temp = this.state.value
+    _temp--
+    this.setState({value : _temp })
+    
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button type="button" onClick={() => this.handleIncrement()}>+</button>
+          {this.state.value}
+        <button type="button" onClick={() => this.handleDecrement()}>-</button>
       </div>
     );
   }
